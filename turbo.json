@@ -1,0 +1,27 @@
+{
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "synth": {
+      "dependsOn": ["build"],
+      "outputs": ["cdk.out/**"]
+    },
+    "deploy": {
+      "dependsOn": ["synth"]
+    },
+    "destroy": {
+      "dependsOn": ["synth"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

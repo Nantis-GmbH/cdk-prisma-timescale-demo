@@ -1,0 +1,40 @@
+generator client {
+  provider        = "prisma-client-js"
+  binaryTargets   = ["native", "linux-arm64-openssl-1.0.x"]
+  previewFeatures = ["postgresqlExtensions", "views"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  extensions        = [timescaledb]
+}
+
+// A metric timeseries database which will be a hypertable
+model metric {
+  device_id String
+  time      DateTime @default(now()) @db.Timestamptz(3)
+  /// cpu load of the device
+  cpu       Float?
+
+  @@unique([device_id, time])
+}
+
+// A view on a continuous aggregation
+view metric_15min {
+  device_id String
+  time      DateTime
+  cpu_avg   Float?
+
+  @@unique([device_id, time])
+}
+
+// Daily CAGG
+view metric_1day {
+  device_id String
+  time      DateTime
+  cpu_avg   Float?
+
+  @@unique([device_id, time])
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@nantis/cloud",
+  "version": "0.0.1",
+  "bin": "bin/timescale_prisma.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "build": "tsc",
+    "synth": "npx aws-cdk synth",
+    "deploy": "npx aws-cdk deploy",
+    "destroy": "npx aws-cdk destroy",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf cdk.out",
+    "clean-synth": "rm -rf .turbo && rm -rf cdk.out"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.109",
+    "@types/node": "^18.11.18",
+    "dotenv": "^16.0.3",
+    "ts-node": "^10.9.1",
+    "tsx": "^3.12.2",
+    "typescript": "~4.9.3"
+  },
+  "dependencies": {
+    "@nantis/prisma": "*",
+    "aws-cdk-lib": "2.54.0",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
+  }
+}

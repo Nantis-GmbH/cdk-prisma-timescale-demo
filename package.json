@@ -1,0 +1,42 @@
+{
+  "name": "@nantis/cdk-timescale-prisma-demo",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/Nantis-GmbH/cdk-prisma-timescale-demo"
+  },
+  "meta": {
+    "webapp": {
+      "repostitory": {
+        "url": "https://github.com/Nantis-GmbH/cdk-prisma-timescale-demo"
+      }
+    }
+  },
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "apps/cloud/lib/layers/*/*"
+    ]
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "synth": "turbo run synth",
+    "deploy": "turbo run deploy",
+    "destroy": "turbo run destroy",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.3",
+    "prettier": "^2.8.3",
+    "turbo": "^1.7.0"
+  },
+  "packageManager": "yarn@3.2.0",
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  }
+}
