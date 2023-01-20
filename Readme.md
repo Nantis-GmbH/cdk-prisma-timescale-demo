@@ -37,7 +37,8 @@ This repo assumes you have a AWS account setup with `aws-cdk`. Aou need to bring
 ## Steps
 1. Provide a `DATABASE_URL` (+`SHADOW_DATABASE_URL` if you want to use the migration commands to full extend)
 2. Run `yarn install` This will install all dependencies (also in all workspace packages)
-3. Run `yarn run deploy` to build and synthesize and deploy the aws-cdk stack. (You can also run `yarn run synth` and the run the `cdk deploy` command inside the `app/cloud` directory if you want to pass additional parameters such as `--profile`)
+3. Migrate your database ideally you would use the migrate command in the prisma package, but you might need to do the reset command twice, see Open Issues
+4. Run `yarn run deploy` to build and synthesize and deploy the aws-cdk stack. (You can also run `yarn run synth` and the run the `cdk deploy` command inside the `app/cloud` directory if you want to pass additional parameters such as `--profile`)
 
 The stack will output a `APIFunctionUrl` which you can paste into the browser to see the data from the continuous aggregates. The database will get a new value each minute from the schedule lambda.
 
